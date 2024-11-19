@@ -1,64 +1,79 @@
+# Public Utility Bill Payment and Invoice Generation System
 
-API:
-POST /payBill
+### **Overview**
+This project is a backend solution for streamlining utility bill payments for services like electricity, water, and gas. It integrates **queues**, **priority handling**, **stacks**, and **file-based data storage** to process requests efficiently, prioritize urgent cases, and provide automated invoice generation. The system ensures smooth operations for users and utility companies, addressing common inefficiencies in bill management systems.
 
+---
 
-{
-  "userId": "user123",
-  "utility": "Electricity",
-  "amount": 500
-}
+### **Features**
+1. **Efficient Queue Management:**
+   - Normal requests handled in **FIFO** order.
+   - **Priority Queue** for overdue payments, disconnection notices, and reconnection requests.
 
+2. **Automated Invoice Generation:**
+   - Generates invoices in PDF format for each payment.
 
+3. **Historical Transaction Management:**
+   - Uses a **stack** to store and allow undoing of previous transactions.
 
-POST /urgentRequest
+4. **Comprehensive Logging:**
+   - Logs daily transactions and overdue payments in **JSON/CSV** format for auditing.
 
-{
-  "userId": "user123",
-  "caseType": "Disconnection Notice"
-}
+5. **File-Based Persistence:**
+   - Stores invoices, logs, and transaction histories using the file system.
 
+---
 
-GET /processRequest
+### **System Requirements**
+- **Technologies:**
+  - Node.js (v14+)
+  - Express.js (for API endpoints)
+  - PDFKit (for PDF generation)
+  - File System Module (for data persistence)
+- **Hardware:**
+  - Minimum: 4GB RAM, 10GB storage
+  - Node.js runtime installed
 
-{
-  "message": "Request processed",
-  "processed": {
-    "userId": "user123",
-    "utility": "Electricity",
-    "amount": 500,
-    "transactionId": 1692373837,
-    "date": "2024-11-19T12:00:00Z"
-  }
-}
+---
 
-GET /transactions/:userId
+### **API Endpoints**
 
-{
-  "message": "Transaction history retrieved",
-  "history": [
-    {
-      "userId": "user123",
-      "utility": "Electricity",
-      "amount": 500,
-      "transactionId": 1692373837,
-      "date": "2024-11-19T12:00:00Z"
-    }
-  ]
-}
+1. **Add a Bill Payment Request**
+   - **POST /payBill**
+   - Adds a new bill payment request to the normal queue.
 
-POST /undoPayment
+2. **Add an Urgent Request**
+   - **POST /urgentRequest**
+   - Adds an urgent case to the priority queue.
 
-{
-  "message": "Transaction undone",
-  "lastTransaction": {
-    "userId": "user123",
-    "utility": "Electricity",
-    "amount": 500,
-    "transactionId": 1692373837,
-    "date": "2024-11-19T12:00:00Z"
-  }
-}
+3. **Process the Next Request**
+   - **GET /processRequest**
+   - Processes the next request, prioritizing urgent cases.
 
-GET /logs
+4. **View Historical Transactions**
+   - **GET /transactions/:userId**
+   - Retrieves transaction history for a user.
 
+5. **Undo Last Transaction**
+   - **POST /undoPayment**
+   - Undoes the last processed transaction.
+
+6. **Get Daily Logs**
+   - **GET /logs**
+   - Retrieves daily logs for auditing.
+
+---
+
+### **Setup Instructions**
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/yourusername/utility-bill-payment-system.git
+   cd utility-bill-payment-system
+2.Install Dependencies:
+    npm install
+3.Run the Server:
+  node index.js
+4.Access the API:
+  -The server runs by default on http://localhost:3000.
+  -Use tools like Postman or cURL to interact with the endpoints.
