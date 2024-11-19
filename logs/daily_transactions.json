@@ -1,0 +1,42 @@
+[
+  {
+    "type": "normal",
+    "userId": "user123",
+    "utility": "Electricity",
+    "amount": 500,
+    "transactionId": 1732039105485,
+    "date": "2024-11-19T17:58:25.485Z"
+  },
+  {
+    "type": "urgent",
+    "userId": "user123",
+    "caseType": "Disconnection Notice",
+    "transactionId": 1732039238893,
+    "date": "2024-11-19T18:00:38.893Z",
+    "priority": true
+  },
+  {
+    "type": "normal",
+    "userId": "user123",
+    "utility": "Electricity",
+    "amount": 500,
+    "transactionId": 1732039467572,
+    "date": "2024-11-19T18:04:27.572Z"
+  },
+  {
+    "type": "urgent",
+    "userId": "user123",
+    "caseType": "Disconnection Notice",
+    "transactionId": 1732040631876,
+    "date": "2024-11-19T18:23:51.876Z",
+    "priority": true
+  },
+  {
+    "type": "normal",
+    "userId": "Vivek",
+    "utility": "Mobile",
+    "amount": 199,
+    "transactionId": 1732041509722,
+    "date": "2024-11-19T18:38:29.722Z"
+  }
+]
